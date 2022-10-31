@@ -8,20 +8,21 @@ img {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   @apply bg-slate-100;
 }
 
-.profile-image {
-  height: 30rem;
-}
-
-@media (min-width: 1024px) {
-  .hero-image {
-    height: 40rem;
+@layer base {
+  :root {
+    --color-card: #f1f6f9;
+    --color-logo: #9ba4b4;
+    --color-body: #14274e;
+    --color-navbar: #9ba4b4;
+    --color-text-navbar: #000;
+    --color-text-base: #fff;
   }
 }

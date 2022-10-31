@@ -1,16 +1,14 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import GetImages from "./GetImages"
-import Profile from "./Profile"
+import Footer from './components/Footer';
+import GetImages from './components/GetImages';
+import Header from './components/Header';
 
 export default function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<GetImages />}></Route>
-          <Route path="/:username" element={<Profile />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </>
-  )
+    <div className="scroll-smooth md:scroll-auto bg-skin-body font-base">
+      <div className="loader w-full height-full fixed z-10 bg-slate-400 opacity-20"></div>
+      <Header />
+      <GetImages />
+      <Footer />
+    </div>
+  );
 }
