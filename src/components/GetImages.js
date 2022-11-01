@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import Image from './Image';
 
@@ -8,39 +9,40 @@ function GetImages() {
   const [query, setQuery] = useState('');
 
   // URLS
+  const clientID = `?client_id=${process.env.REACT_APP_API_KEY}`;
+  const mainUrl = `https://api.unsplash.com/photos`;
+  const searchUrl = `https://api.unsplash.com/search/photos`;
+
+  const fetchImages = async () => {
+    let url;
+    const urlPage = `&page=${page}`;
+    const urlQuery = `&query=${query}`;
+
+    if (query) url = `${searchUrl}${clientID}${urlPage}${urlQuery}`;
+    else url = `${mainUrl}${clientID}${urlPage}`;
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setImages((oldImages) => {
+        if (query && page === 1) {
+          console.log(data);
+          return data.results;
+        } else if (query) {
+          console.log(data);
+          return [...oldImages, ...data.results];
+        } else {
+          console.log(data);
+          return [...oldImages, ...data];
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
-    const clientID = `?client_id=${process.env.REACT_APP_API_KEY}`;
-    const mainUrl = `https://api.unsplash.com/photos`;
-    const searchUrl = `https://api.unsplash.com/search/photos`;
-    const fetchImages = async () => {
-      let url;
-      const urlPage = `&page=${page}`;
-      const urlQuery = `&query=${query}`;
-
-      if (query) url = `${searchUrl}${clientID}${urlPage}${urlQuery}`;
-      else url = `${mainUrl}${clientID}${urlPage}`;
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        setImages((oldImages) => {
-          if (query && page === 1) {
-            console.log(data);
-            return data.results;
-          } else if (query) {
-            console.log(data);
-            return [...oldImages, ...data.results];
-          } else {
-            console.log(data);
-            return [...oldImages, ...data];
-          }
-        });
-      } catch (err) {
-        console.log(err);
-      }
-    };
     fetchImages();
-  }, [page, query]);
+  }, [page]);
 
   useEffect(() => {
     const event = window.addEventListener('scroll', () => {
