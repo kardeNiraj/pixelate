@@ -4,44 +4,43 @@ import Image from './Image';
 function GetImages() {
   // STATES
   const [images, setImages] = useState([]);
-  const [query, setQuery] = useState('');
   const [page, setPage] = useState(0);
+  const [query, setQuery] = useState('');
 
   // URLS
-  const clientID = `?client_id=${process.env.REACT_APP_API_KEY}`;
-  const mainUrl = `https://api.unsplash.com/photos`;
-  const searchUrl = `https://api.unsplash.com/search/photos`;
 
   useEffect(() => {
+    const clientID = `?client_id=${process.env.REACT_APP_API_KEY}`;
+    const mainUrl = `https://api.unsplash.com/photos`;
+    const searchUrl = `https://api.unsplash.com/search/photos`;
+    const fetchImages = async () => {
+      let url;
+      const urlPage = `&page=${page}`;
+      const urlQuery = `&query=${query}`;
+
+      if (query) url = `${searchUrl}${clientID}${urlPage}${urlQuery}`;
+      else url = `${mainUrl}${clientID}${urlPage}`;
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        setImages((oldImages) => {
+          if (query && page === 1) {
+            console.log(data);
+            return data.results;
+          } else if (query) {
+            console.log(data);
+            return [...oldImages, ...data.results];
+          } else {
+            console.log(data);
+            return [...oldImages, ...data];
+          }
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    };
     fetchImages();
-  }, [page]);
-
-  const fetchImages = async () => {
-    let url;
-    const urlPage = `&page=${page}`;
-    const urlQuery = `&query=${query}`;
-
-    if (query) url = `${searchUrl}${clientID}${urlPage}${urlQuery}`;
-    else url = `${mainUrl}${clientID}${urlPage}`;
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      setImages((oldImages) => {
-        if (query && page === 1) {
-          console.log(data);
-          return data.results;
-        } else if (query) {
-          console.log(data);
-          return [...oldImages, ...data.results];
-        } else {
-          console.log(data);
-          return [...oldImages, ...data];
-        }
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  }, [page, query]);
 
   useEffect(() => {
     const event = window.addEventListener('scroll', () => {
