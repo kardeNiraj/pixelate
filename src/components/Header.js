@@ -3,7 +3,7 @@ import logo from '../images/icons8-dryclean-with-any-solvent-except-trichloroeth
 
 function Header() {
   return (
-    <div className="container-full flex justify-between py-2 pl-10 pr-10 mx-auto bg-skin-navbar">
+    <div className="container flex justify-between py-2 px-2 mx-auto bg-skin-navbar rounded-xl">
       {/* logo */}
       <div className="flex">
         <img src={logo} alt="logo" className="w-10" />

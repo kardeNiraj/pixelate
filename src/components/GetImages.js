@@ -66,12 +66,12 @@ function GetImages() {
   return (
     <div>
       {/* search bar */}
-      <div class="flex justify-end pr-10">
+      <div class="container mx-auto px-2">
         <div class="mb-3 xl:w-96 mt-3">
           <div class="input-group relative flex items-stretch w-full mb-4">
             <input
               type="search"
-              className="form-control relative flex-auto min-w-0 w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-skin-card bg-clip-padding border-2 border-solid border-skin-card rounded transition ease-in-out m-0 focus:text-slate-500 focus:bg-white focus:border-blue-600 focus:outline-none"
+              className="form-control relative flex-auto min-w-0 w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-skin-card bg-clip-padding border-2 border-solid border-skin-card rounded-xl transition ease-in-out m-0 focus:text-slate-500 focus:bg-white focus:border-blue-600 focus:outline-none"
               placeholder="Search"
               aria-label="Search"
               aria-describedby="button-addon3"
@@ -79,12 +79,12 @@ function GetImages() {
               onKeyDown={keyDownHandler}
             />
             <button
-              className="text-skin-border ml-1 btn px-6 border-2 border-skin-navbar bg-skin-navbar font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+              className="text-skin-border ml-1 btn px-6 border-2 border-skin-navbar bg-skin-card font-medium text-xs leading-tight uppercase rounded-xl hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
               type="button"
               id="button-addon3"
               onClick={submitHandler}
             >
-              <i class="fa-solid fa-magnifying-glass"></i>
+              <i class="fa-solid fa-magnifying-glass text-black"></i>
             </button>
           </div>
         </div>
@@ -103,11 +103,11 @@ function GetImages() {
           </div>
         </div>
       ) : (
-        <section className="px-3 container mx-auto">
+        <section className="px-2 container mx-auto">
           <h1 className="font-bold text-xl md:text-2xl lg:text-3xl my-10 lg:mt-5 lg:mb-10 text-skin-base capitalize">
             Recommended for you
           </h1>
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 md:gap-12 md:grid-cols-2 lg:grid-cols-3">
             {images.map((image) => (
               <Image key={image.blur_hash} {...image} />
             ))}

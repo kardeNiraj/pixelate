@@ -18,10 +18,16 @@ body {
 
 @layer base {
   :root {
-    --color-card: #f1f6f9;
-    --color-logo: #9ba4b4;
-    --color-body: #14274e;
-    --color-navbar: #9ba4b4;
+    /* --color-card: #e5f9db;
+    --color-logo: #40513b;
+    --color-body: #83764f;
+    --color-navbar: #a2a378;
+    --color-text-navbar: #000;
+    --color-text-base: #fff; */
+    --color-card: #edf1d6;
+    --color-logo: #40513b;
+    --color-body: #40513b;
+    --color-navbar: #9dc08b;
     --color-text-navbar: #000;
     --color-text-base: #fff;
   }

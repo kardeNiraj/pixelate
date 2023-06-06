@@ -21,35 +21,6 @@ function Image(props) {
             className="h-52 w-full object-cover rounded-3xl md:h-80"
           />
         </a>
-        {/* <p className="mt-2 text-center font-medium">--Download--</p> */}
-
-        {/* Download Buttons */}
-        {/* <div className="w-full flex justify-around">
-          <a href={props.urls.full} onClick={(e) => downloadImage(e)} download>
-            <button className="w-20 border-2 rounded-3xl mt-1 border-slate-200">
-              Full
-            </button>
-          </a>
-          <a href={props.urls.raw} onClick={(e) => downloadImage(e)} download>
-            <button className="w-20 border-2 rounded-3xl mt-1 border-slate-200">
-              Raw
-            </button>
-          </a>
-          <a
-            href={props.urls.regular}
-            onClick={(e) => downloadImage(e)}
-            download
-          >
-            <button className="w-20 border-2 rounded-3xl mt-1 border-slate-200">
-              Regular
-            </button>
-          </a>
-          <a href={props.urls.small} onClick={(e) => downloadImage(e)} download>
-            <button className="w-20 border-2 rounded-3xl mt-1 border-slate-200">
-              Small
-            </button>
-          </a>
-        </div> */}
 
         {/* container for items below image */}
         <article className="flex items-center justify-between flex-wrap">
@@ -92,6 +63,8 @@ function Image(props) {
                 ) : (
                   <a
                     href={`https://instagram.com/${props.user.instagram_username}`}
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     <span>
                       <i className="fa-brands fa-instagram pr-1"></i>
