@@ -4,7 +4,7 @@ function Footer() {
   return (
     <div className="h-70 w-full fixed bottom-0 bg-skin-navbar">
       <p className="text-slate-100 text-center">
-        &#169; Copyright 2022 | Niraj Karde
+        &#169; Images are taken from UNSPLASH and are subjected to copyright
       </p>
     </div>
   );

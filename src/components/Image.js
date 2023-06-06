@@ -1,11 +1,11 @@
 import { format } from 'date-fns';
-import React from 'react';
 import Card from './Card';
-// import { saveAs } from 'file-saver';
 
 function Image(props) {
+  const userProfile = `https://unsplash.com/@${props.user.username}`;
   return (
     <>
+      {console.log(props)}
       <Card className="hover:-translate-y-1 bg-skin-card">
         {/* Image */}
         <a
@@ -21,35 +21,36 @@ function Image(props) {
             className="h-52 w-full object-cover rounded-3xl md:h-80"
           />
         </a>
-        <p className="mt-2 text-center font-medium">--Download--</p>
+        {/* <p className="mt-2 text-center font-medium">--Download--</p> */}
+
         {/* Download Buttons */}
-        <div className="w-full flex justify-around">
-          <a href={props.urls.full}>
+        {/* <div className="w-full flex justify-around">
+          <a href={props.urls.full} onClick={(e) => downloadImage(e)} download>
             <button className="w-20 border-2 rounded-3xl mt-1 border-slate-200">
               Full
             </button>
           </a>
-          <a href={props.urls.raw}>
-            <button
-              onClick={(event) => {
-                console.log(event);
-              }}
-              className="w-20 border-2 rounded-3xl mt-1 border-slate-200"
-            >
+          <a href={props.urls.raw} onClick={(e) => downloadImage(e)} download>
+            <button className="w-20 border-2 rounded-3xl mt-1 border-slate-200">
               Raw
             </button>
           </a>
-          <a href={props.urls.regular}>
+          <a
+            href={props.urls.regular}
+            onClick={(e) => downloadImage(e)}
+            download
+          >
             <button className="w-20 border-2 rounded-3xl mt-1 border-slate-200">
               Regular
             </button>
           </a>
-          <a href={props.urls.small}>
+          <a href={props.urls.small} onClick={(e) => downloadImage(e)} download>
             <button className="w-20 border-2 rounded-3xl mt-1 border-slate-200">
               Small
             </button>
           </a>
-        </div>
+        </div> */}
+
         {/* container for items below image */}
         <article className="flex items-center justify-between flex-wrap">
           <div className="pt-5 flex items-center justify-start">
@@ -63,9 +64,14 @@ function Image(props) {
 
             {/* username and date of upload */}
             <ul className="ml-3">
-              <li className="font-bold text-slate-800 mb-1">
+              <a
+                href={userProfile}
+                target="_blank"
+                rel="noreferrer"
+                className="font-bold text-slate-800 mb-1"
+              >
                 {props.user.name}
-              </li>
+              </a>
 
               <li className="text-slate-600 text-sm">
                 {format(new Date(props.created_at), 'dd MMMM yyyy')}

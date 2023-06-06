@@ -11,15 +11,6 @@ function Header() {
           pixelate
         </h1>
       </div>
-      {/* links */}
-
-      <div>
-        <ul className="decoration-none flex justify-center text-lg font-medium capitalize text-skin-border">
-          <li className="m-1">home</li>
-          <li className="m-1">saved</li>
-          <li className="m-1">about</li>
-        </ul>
-      </div>
     </div>
   );
 }

@@ -13,6 +13,7 @@ function GetImages() {
   const mainUrl = `https://api.unsplash.com/photos`;
   const searchUrl = `https://api.unsplash.com/search/photos`;
 
+  // Fetching images from API
   const fetchImages = async () => {
     let url;
     const urlPage = `&page=${page}`;
@@ -24,16 +25,9 @@ function GetImages() {
       const response = await fetch(url);
       const data = await response.json();
       setImages((oldImages) => {
-        if (query && page === 1) {
-          console.log(data);
-          return data.results;
-        } else if (query) {
-          console.log(data);
-          return [...oldImages, ...data.results];
-        } else {
-          console.log(data);
-          return [...oldImages, ...data];
-        }
+        if (query && page === 1) return data.results;
+        else if (query) return [...oldImages, ...data.results];
+        else return [...oldImages, ...data];
       });
     } catch (err) {
       console.log(err);
@@ -97,7 +91,6 @@ function GetImages() {
       </div>
 
       {/* container for images */}
-
       {images < 20 ? (
         <div class="flex justify-center items-center">
           <div
